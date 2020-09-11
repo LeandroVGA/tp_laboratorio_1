@@ -89,12 +89,11 @@ int getInt(char* mensaje, char* mensajeError, int* pResultado,int reintentos,int
 }
 
 /**
- * \brief Suma los valores quei ngresa el usuario
+ * \brief Suma los valores que ingresa el usuario
  * \param float numeroA es le primer numero que ingreso la persona
  * \param float numeroB es le primer numero que ingreso la persona
  * \param int* pResultado, puntero al espacio de memoria donde se dejara el valor obtenido
- * \param int reintentos, cantidad de oportunidades para ingresar el dato
- * \return (-1) Error / (0) Ok
+ * \return (0) Ok
  *
  */
 int Suma(float numeroA, float numeroB, float resultado[]) {
@@ -105,6 +104,14 @@ int Suma(float numeroA, float numeroB, float resultado[]) {
 
 }
 
+/**
+ * \brief Resta los valores que ingresa el usuario
+ * \param float numeroA es le primer numero que ingreso la persona
+ * \param float numeroB es le primer numero que ingreso la persona
+ * \param int* pResultado, puntero al espacio de memoria donde se dejara el valor obtenido
+ * \return (0) Ok
+ *
+ */
 int Resta(float numeroA, float numeroB, float resultado[]) {
 
 	*resultado = numeroA - numeroB;
@@ -113,6 +120,14 @@ int Resta(float numeroA, float numeroB, float resultado[]) {
 
 }
 
+/**
+ * \brief Multiplicacion los valores que ingresa el usuario
+ * \param float numeroA es le primer numero que ingreso la persona
+ * \param float numeroB es le primer numero que ingreso la persona
+ * \param int* pResultado, puntero al espacio de memoria donde se dejara el valor obtenido
+ * \return (0) Ok
+ *
+ */
 int Multiplicacion(float numeroA, float numeroB, float resultado[]) {
 
 	*resultado = numeroA * numeroB;
@@ -121,6 +136,15 @@ int Multiplicacion(float numeroA, float numeroB, float resultado[]) {
 
 }
 
+
+/**
+ * \brief Division los valores que ingresa el usuario
+ * \param float numeroA es le primer numero que ingreso la persona
+ * \param float numeroB es le primer numero que ingreso la persona
+ * \param int* pResultado, puntero al espacio de memoria donde se dejara el valor obtenido
+ * \return (-1) Error / (0) Ok
+ *
+ */
 int Division(float numeroA, float numeroB, float resultado[]) {
 
 	int error = -1;
@@ -137,6 +161,15 @@ int Division(float numeroA, float numeroB, float resultado[]) {
 
 }
 
+
+/**
+ * \brief Division los valores que ingresa el usuario
+ * \param float numeroA es le primer numero que ingreso la persona
+ * \param float numeroB es le primer numero que ingreso la persona
+ * \param int* pResultado, puntero al espacio de memoria donde se dejara el valor obtenido
+ * \return (0) Ok
+ *
+ */
 int Factorial(float numero, float resultado[]) {
 
 	int total = 1;
