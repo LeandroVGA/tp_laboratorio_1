@@ -1,0 +1,4 @@
+23:43:28 **** Incremental Build of configuration Debug for project Trabajo Practico Nro 2 ****
+Info: Internal Builder is used for build
+gcc -o "Trabajo Practico Nro 2.exe" "src\\ArrayEmployee.o" "src\\Trabajo Practico Nro 2.o" "src\\utn.o" 
+Info: Nothing to build for Trabajo Practico Nro 2

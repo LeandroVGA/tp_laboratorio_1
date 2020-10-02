@@ -1,0 +1,20 @@
+/*
+ * Employee.h
+ *
+ *  Created on: 30 sep. 2020
+ *      Author: Leandro
+ */
+
+#ifndef EMPLOYEE_H_
+#define EMPLOYEE_H_
+
+typedef struct
+{
+	char nombre[LONG_NOMBRE];
+	int legajo;
+	int isEmpty;
+	int id;
+}Employee;
+
+
+#endif /* EMPLOYEE_H_ */

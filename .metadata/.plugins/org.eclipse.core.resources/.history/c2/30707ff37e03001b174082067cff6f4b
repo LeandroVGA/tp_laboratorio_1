@@ -1,0 +1,36 @@
+/*
+ ============================================================================
+ Name        : TP2.c
+ Author      : Nicolas Letticugna - 1H
+ ============================================================================
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+#include "Employee.h"
+#include "EmployeeData.h"
+
+
+
+void EmployeeData(Employee list[], int len)
+{
+    int i;
+
+    int idEmpleado[QTY_EMPLOYE_TEST] = {1,2,3,4,5};
+    char nombreEmpleado[QTY_EMPLOYE_TEST][LONG_NAME_EMPLOYE]= {"Leandro","Carlos","Pepito","Laura","Sandra"};
+    char apellidoEmpleado[QTY_EMPLOYE_TEST][LONG_NAME_EMPLOYE]= {"V_Gomez","Alvarez","Fernandez","Lampert","Fandiño"};
+    float salarioEmpleado[QTY_EMPLOYE_TEST] = {8740.00,84520.50,74000.11,89990.00,57482.58};
+    int sectorEmpleado[QTY_EMPLOYE_TEST] = {13,14,3,2,9};
+    int estadoEmpleado[QTY_EMPLOYE_TEST]= {FALSE,FALSE,FALSE,FALSE,FALSE};
+
+    for(i=0; i<len; i++)
+        {
+            list[i].id = idEmpleado[i];
+            strcpy(list[i].name, nombreEmpleado[i]);
+            strcpy(list[i].lastName, apellidoEmpleado[i]);
+            list[i].salary = salarioEmpleado[i];
+            list[i].sector = sectorEmpleado[i];
+            list[i].isEmpty = estadoEmpleado[i];
+        }
+}

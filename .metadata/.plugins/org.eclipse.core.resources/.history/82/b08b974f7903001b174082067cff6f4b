@@ -1,0 +1,231 @@
+/*
+ * alumno.c
+ *
+ *  Created on: 29 sep. 2020
+ *      Author: leandro
+ */
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "utn.h"
+#include "Employee.h"
+
+static int generarIdNuevo(void);
+
+
+/**
+ * \brief Realiza el alta de un employee solo si el indice corresponde a un Empty
+ * \param Employee arrayEmployee[], Es el puntero al array de employee
+ * \param int limite, es el limite de array
+ * \param int indice, es el indice donde se cargara el employee
+ * \return (-1) Error / (0) Ok
+ *
+ */
+
+
+int addEmployee(Employee* arrayEmployee, int indice, int id, char name[],char lastName[],float salary,int sector)
+{
+
+	int retorno = -1;
+	Employee bufferEmployee;
+
+	if(	arrayEmployee != NULL &&
+			indice >=0 &&
+			arrayEmployee[indice].isEmpty == TRUE)
+		{
+			if(	utn_getNombre("\n Name?","\nError",bufferEmployee.name,2,LONG_NAME) == 0 &&
+					utn_getNombre("\n Last Name?","\nError",bufferEmployee.lastName,2,LONG_NAME) == 0 &&
+					 	 utn_getFloat(&bufferEmployee.salary, "\n Salary?", "\nError", 0, 99999999, 2) == 0 &&
+							utn_getInt("\nSector?","\nError",&bufferEmployee.sector,2,MAX_SECTOR,MIN_SECTOR) == 0 )
+			{
+				//bufferAlumno.isEmpty = FALSE;
+				bufferEmployee.id= generarIdNuevo();
+				arrayEmployee[indice] = bufferEmployee;
+				arrayEmployee[indice].isEmpty = FALSE;
+
+				retorno = 0;
+			}
+		}
+		return retorno;
+}
+
+
+/**
+ * \brief Modifica los datos de un alumno solo si el indice corresponde a un NO Empty
+ * \param Alumno arrayAlumnos[], Es el puntero al array de alumnos
+ * \param int limite, es el limite de array
+ * \param int indice, es el indice donde se cargara el alumno
+ * \return (-1) Error / (0) Ok
+ *
+ */
+int alumno_modificar(Employee arrayEmployee[],int limite,int indice)
+{
+	int retorno = -1;
+
+	Employee bufferEmployee;
+
+	if(	utn_getNombre("\n Name?","\nError",bufferEmployee.name,2,LONG_NAME) == 0 &&
+					utn_getNombre("\n Last Name?","\nError",bufferEmployee.lastName,2,LONG_NAME) == 0 &&
+					 	 utn_getFloat(&bufferEmployee.salary, "\n Salary?", "\nError", 0, 99999999, 2) == 0 &&
+							utn_getInt("\nSector?","\nError",&bufferEmployee.sector,2,MAX_SECTOR,MIN_SECTOR) == 0 )
+	{
+		//bufferAlumno.isEmpty = FALSE;
+		bufferEmployee.id= arrayEmployee[indice].id;
+
+		arrayEmployee[indice] = bufferEmployee;
+		arrayEmployee[indice].isEmpty = FALSE;
+
+		retorno = 0;
+	}
+
+
+
+	return retorno;
+}
+
+
+
+/**
+ * \brief Imprime los employee cargados
+ * \param Employee arrayEmployee[], Es el puntero al array de employee
+ * \param int limite, es el limite de array
+ * \return (-1) Error / (0) Ok
+ *
+ */
+int printEmployees(Employee* pArrayEmployee, int limite)
+{
+	int retorno = -1;
+	if(pArrayEmployee != NULL && limite > 0)
+	{
+		for(int i=0;i<limite;i++)
+		{
+			if(pArrayEmployee[i].isEmpty == FALSE)
+			{
+				printf("\nName: %s - \nLast Name: %s - \nSector: %d - Salary: %f  - ID:%d",pArrayEmployee[i].name,pArrayEmployee[i].lastName,pArrayEmployee[i].sector,pArrayEmployee[i].salary,pArrayEmployee[i].id);
+			}
+		}
+		retorno = 0;
+	}
+	return retorno;
+}
+
+/**
+ * \brief Inicializa el array de employee
+ * \param Employee pArrayEmployee[], Es el puntero al array de employee
+ * \param int limite, es el limite de array
+ * \return (-1) Error / (0) Ok
+ *
+ */
+int alumno_initArray(Employee* pArrayEmployee, int limite)
+{
+	int retorno = -1;
+	if(pArrayEmployee != NULL && limite > 0)
+	{
+		for(int i=0;i<limite;i++)
+		{
+			pArrayEmployee[i].isEmpty = TRUE;
+		}
+		retorno = 0;
+	}
+	return retorno;
+}
+
+
+
+int alumno_printById(Employee* pArrayEmployee, int limit, int index)
+{
+		int retorno = -1;
+
+		if(pArrayEmployee != NULL && limit > 0 && index < limit)
+		{
+			if(pArrayEmployee[index].isEmpty == FALSE)
+			{
+				printf("\nName: %s - \nLast Name: %s - \nSector: %d - Salary: %f  - ID:%d",pArrayEmployee[index].name,pArrayEmployee[index].lastName,pArrayEmployee[index].sector,pArrayEmployee[index].salary,pArrayEmployee[index].id);
+				retorno = 0;
+			}
+		}
+		return retorno;
+}
+
+
+
+
+
+
+
+int alumno_buscarLibreRef(Employee pArrayEmployee[], int limit, int *pIndex)
+{
+	int retornar = -1;
+	if(pArrayEmployee != NULL && pIndex != NULL && limit>0)
+	{
+		for(int i = 0; i < limit; i++)
+		{
+			if(pArrayEmployee[i].isEmpty == TRUE)
+			{
+				*pIndex = i;
+				retornar = 0;
+				break;
+			}
+		}
+	}
+	return retornar;
+}
+
+int alumno_buscarLibreValor(Employee pArrayEmployee[], int limit)
+{
+	int retornar = -1;
+	if(pArrayEmployee != NULL && limit>0)
+	{
+		for(int i = 0; i < limit; i++)
+		{
+			if(pArrayEmployee[i].isEmpty == TRUE)
+			{
+				retornar = i;
+				break;
+			}
+		}
+	}
+
+	return retornar;
+}
+
+
+/* Cada vez que la llamo me devuelve un ID nuevo
+ * que nunca me devolvio antes
+ */
+
+
+static int generarIdNuevo(void)
+{
+	static int id=0; // es global para solo la fn puede usarla
+
+	//guardar el ultimo que asigne (ultimo que devolvi)
+	//para devolver 1+
+	id = id+1;
+	return id;
+}
+
+
+int alumno_buscarId(Employee* pArrayEmployee, int limite, int* pIndex, int id)
+{
+    int retorno = -1;
+    //*pIndex = -1;
+    if (pArrayEmployee != NULL && limite > 0)
+    {
+        for (int i = 0; i < limite; i++)
+        {
+            if(pArrayEmployee[i].isEmpty == FALSE )
+            {
+                if(pArrayEmployee[i].id == id)
+                {
+                   *pIndex = i;
+                   retorno = 0;
+                    break;
+                }
+            }
+        }
+    }
+    return retorno;
+}
