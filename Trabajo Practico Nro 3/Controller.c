@@ -107,7 +107,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 				ll_add(pArrayListEmployee,pAuxiliarEmpleado);
 
 				retorno = 0;
-				printf("Empleado creado correctamente en la ubicación %d\n", idAux);
+				printf("Empleado creado correctamente en la ubicacian %d\n", idAux);
 			}
 		}
 	}
@@ -134,7 +134,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 	if(pArrayListEmployee != NULL)
 	{
 		controller_ListEmployee(pArrayListEmployee);
-		if(!utn_getNumero(&auxID,"Ingrese el ID que desea editar\n","ID inválido\n",0,ll_len(pArrayListEmployee), 2))
+		if(!utn_getNumero(&auxID,"Ingrese el ID que desea editar\n","ID invalido\n",0,ll_len(pArrayListEmployee), 2))
 		{
 			index = controller_buscarPorIdArray(pArrayListEmployee, auxID);
 			auxEmployee = (Employee*)ll_get(pArrayListEmployee,index);
@@ -143,7 +143,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 				employee_imprimir(auxEmployee);
 
 
-				if(!utn_getNumero(&opcionAux,"Confirma modificar el empleado? [0-NO/1-SI]\n","Opción inválida\n",0,1,2) && opcionAux == 1)
+				if(!utn_getNumero(&opcionAux,"Confirma modificar el empleado? [0-NO/1-SI]\n","Opcian invalida\n",0,1,2) && opcionAux == 1)
 				{
 					if(!(utn_getNombre(auxNombre, LON_AUX,"Ingrese nombre\n", "Valor incorrecto\n",2)) &&
 					   !(utn_getNumero(&auxHsTrabajadas,"Ingrese horas trabajadas\n", "Valor incorrecto\n",1, 1000,2)) &&
@@ -181,7 +181,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 	if(pArrayListEmployee != NULL)
 	{
 		controller_ListEmployee(pArrayListEmployee);
-		if(!utn_getNumero(&auxID,"Ingrese el ID que desea eliminar\n","ID inválido\n",0,ll_len(pArrayListEmployee), 2))
+		if(!utn_getNumero(&auxID,"Ingrese el ID que desea eliminar\n","ID invalido\n",0,ll_len(pArrayListEmployee), 2))
 		{
 			index = controller_buscarPorIdArray(pArrayListEmployee, auxID);
 			auxEmployee = (Employee*)ll_get(pArrayListEmployee,index);
@@ -189,7 +189,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 			{
 				employee_imprimir(auxEmployee);
 
-				if(!utn_getNumero(&opcionAux,"Confirma eliminar el empleado? [0-NO/1-SI]\n","Opción inválida\n",0,1,2) && opcionAux == 1)
+				if(!utn_getNumero(&opcionAux,"Confirma eliminar el empleado? [0-NO/1-SI]\n","Opcian invalida\n",0,1,2) && opcionAux == 1)
 				{
 					retorno = 0;
 					ll_remove(pArrayListEmployee,index);
@@ -246,9 +246,9 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
 		if(pArrayListEmployee != NULL)
 		{
 			retorno=0;
-			if(!utn_getNumero(&opcion,"Ingrese órden [1-ascendente / 0-descendente]\n","Valor inválido\n",0,1,2))
+			if(!utn_getNumero(&opcion,"Ingrese orden [1-ascendente / 0-descendente]\n","Valor invalido\n",0,1,2))
 			{
-				printf("Espere, se está cargando la lista\n");
+
 				if(ll_sort(pArrayListEmployee,employee_pFordenarNombre,opcion)==0)
 				{
 					printf("Fue ordenado correctamente\n");
