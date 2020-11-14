@@ -24,6 +24,11 @@
 
 int main()
 {
+
+	int j,c;
+
+	j = 4;
+	c = 2;
 	setbuf(stdout,NULL);
     int option = 0;
     int archivoCargado = 0;
